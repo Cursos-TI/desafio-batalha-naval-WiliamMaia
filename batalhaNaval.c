@@ -92,7 +92,34 @@ void habilidade_cone(int tabuleiro[tamanho][tamanho], int origemi, int origemj) 
         }
     }
 }
+void habilidade_cruz(int tabuleiro[tamanho][tamanho], int origemi, int origemj) {   //  Aqui inicio a recursividade para a habilidade cruz
+    if ((origemi + 1 >= tamanho) || (origemi - 1 < 0) || (origemj + 2 >= tamanho) || (origemj - 2 < 0)) {  //  Aqui coloco as limitações para que a habilidade não ultrapasse o tabuleiro
+        printf("A habilidade cruz ultrapassa os limites do tabuleiro!\n");
+        return;  //   Aplicado para impedir que seja aplicado a habilidade, senão aplicaria ainda assim.
+    }
 
+    for (int i = -1; i <= 1; i++) {  // Aqui aplico a vertical da ceuz a partir de seu ponto de origem
+        int ei = origemi + i;   //  Crio a variavel como no caso anterior 'ei' para expansão de i
+        if (ei >= 0 && ei < tamanho) {   //  condição para limitar o tamanho
+            if (tabuleiro[ei][origemj] == 3) {   //  Aqui é aplicado uma condição para representar um acerto ao navio
+                tabuleiro[ei][origemj] = 5;
+            } else {
+                tabuleiro[ei][origemj] = 1; // Preenche o desenho com '1' se não houver acertos
+            }
+        }
+    }
+
+    for (int j = -2; j <= 2; j++) {  // Aqui é aplicado a horixontal da cruz a partir do ponto de origem
+        int ej = origemj + j;   //   //  Crio a variavel como no caso anterior 'ej' para expansão de j
+        if (ej >= 0 && ej < tamanho) {   //   Limito o tamanho
+            if (tabuleiro[origemi][ej] == 3) {   //  Aqui é aplicado uma condição para representar um acerto ao navio
+                tabuleiro[origemi][ej] = 5;
+            } else {
+                tabuleiro[origemi][ej] = 1;   // Preenche o desenho com '1' se não houver acertos
+            }
+        }
+    }
+}
 
 int main() {
 
@@ -103,6 +130,7 @@ int main() {
     navio_diagonal1(tabuleiro, 1, 7);    //  Aqui chamo a recursividade do navio na diagonal, coloquei como posição inicial 'H1' no tabuleiro e ocupou 'H1, I2 e J3'
     navio_diagonal2(tabuleiro, 4, 3);    //  Aqui chamo a recursividade do navio na diagonal, coloquei como posição inicial 'D4' no tabuleiro e ocupou 'D4, C5 e B6'
     habilidade_cone(tabuleiro, 7, 2);   //  Aqui chamo a recursividade da habilidade em cone, coloquei como origem a posição 'C7' no tabuleiro e sw expandiu para baixo desenhando o cone, escolhi essa posição para o desenho complero sem 'acerto'
+    habilidade_cruz(tabuleiro, 2, 3);   //  Aqui chamo a recursividade da habilidade em cone, coloquei como origem a posição 'C7' no tabuleiro e sw expandiu para baixo desenhando o cone, escolhi essa posição para o desenho complero sem 'acerto'
     exibicao_tabuleiro(tabuleiro);   //  Aqui chamo a recursividade da exibição do tabuleiro
 
     
