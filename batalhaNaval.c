@@ -111,7 +111,7 @@ void habilidade_cruz(int tabuleiro[tamanho][tamanho], int origemi, int origemj) 
         if (ei >= 0 && ei < tamanho) {   //  condição para limitar o tamanho
             if (tabuleiro[ei][origemj] == 3) {   //  Aqui é aplicado uma condição para representar um acerto ao navio
                 tabuleiro[ei][origemj] = 5;
-            } else {
+            } else if (tabuleiro[ei][origemj] != 5) {   //  Aqui foi preciso aplicar essa condição para que não sobrescrevesse no processo da expansão o acerto e causando o ponto de oribem nunca detectar um acerto por assim dizer no tabuleiro
                 tabuleiro[ei][origemj] = 1; // Preenche o desenho com '1' se não houver acertos
             }
         }
@@ -122,7 +122,7 @@ void habilidade_cruz(int tabuleiro[tamanho][tamanho], int origemi, int origemj) 
         if (ej >= 0 && ej < tamanho) {   //   Limito o tamanho
             if (tabuleiro[origemi][ej] == 3) {   //  Aqui é aplicado uma condição para representar um acerto ao navio
                 tabuleiro[origemi][ej] = 5;
-            } else {
+            } else if (tabuleiro[origemi][ej] != 5) {   //  Aqui foi preciso aplicar essa condição para que não sobrescrevesse no processo da expansão o acerto e causando o ponto de oribem nunca detectar um acerto por assim dizer no tabuleiro
                 tabuleiro[origemi][ej] = 1;   // Preenche o desenho com '1' se não houver acertos
             }
         }
@@ -139,7 +139,7 @@ void habilidade_octaedro(int tabuleiro[tamanho][tamanho], int origemi, int orige
         if (ei >= 0 && ei < tamanho) {
             if (tabuleiro[ei][origemj] == 3) {   //  Aqui é aplicado uma condição para representar um acerto ao navio
                 tabuleiro[ei][origemj] = 5;
-            } else {
+            } else if (tabuleiro[ei][origemj] != 5) {   //  Aqui foi preciso aplicar essa condição para que não sobrescrevesse no processo da expansão o acerto e causando o ponto de oribem nunca detectar um acerto por assim dizer no tabuleiro
                 tabuleiro[ei][origemj] = 1; // Preenche o desenho com '1' se não houver acertos
             }
         }
@@ -149,7 +149,7 @@ void habilidade_octaedro(int tabuleiro[tamanho][tamanho], int origemi, int orige
         if (ej >= 0 && ej < tamanho) {
             if (tabuleiro[origemi][ej] == 3) {   //  Aqui é aplicado uma condição para representar um acerto ao navio
                 tabuleiro[origemi][ej] = 5;
-            } else {
+            } else if (tabuleiro[origemi][ej] != 5) {  //  Aqui foi preciso aplicar essa condição para que não sobrescrevesse no processo da expansão o acerto e causando o ponto de oribem nunca detectar um acerto por assim dizer no tabuleiro
                 tabuleiro[origemi][ej] = 1;   // Preenche o desenho com '1' se não houver acertos
             }
         }
